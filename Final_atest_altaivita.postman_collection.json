@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "fe8ee76f-9414-4c27-8920-7799dd48f531",
+		"name": "Final_atest_altaivita",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36227815"
+	},
+	"item": [
+		{
+			"name": "Добавление товара",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"success\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.success).to.eql(true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"goodId\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.payload.order.basket.items[4].cart.goodId).to.eql(192534);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"context\":{\"branchId\":615,\"orderId\":34773227,\"clientId\":9088058},\"operations\":[{\"operation\":\"OrderAddGoodToBasket\",\"arguments\":{\"goodId\":192534,\"quantity\":1}}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}batch/order",
+					"host": [
+						"{{baseURL}}batch"
+					],
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение количества товара",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"success\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.success).to.eql(true);\r",
+							"});\r",
+							"pm.test(\"goodId\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.payload.order.basket.items[4].cart.goodId).to.eql(192534);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "_ejwt",
+						"value": "=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJtZnItZXNob3AiLCJhdWQiOiJiMmMiLCJpYXQiOjE3Mzk5MDc5NDAuMzE0Mjg0LCJleHAiOjE3NDExMTc1NDAuMzE0Mjg2LCJqdGkiOiJjdXN0b21lciIsInBkIjp7InVpZCI6MTc1OTM0NjE2OSwiY2xpZW50SWQiOjg4NzEyMDUsImF1dGhTdGF0dXMiOjAsImF1dGhUaW1lIjpudWxsLCJydGltQXV0aCI6bnVsbH19.eIwVDv0pHF06gOj_0LMjxJdtXnjyL0NxvvC_FtXT1YvraOUXsY9hcgM4XD8ME35JABdNxBeAK225J9gMqPnRHHPIzpw_EWER6LUct_e3JEMfrSee4xwSRbXG2jkinkdeQc9nCT-lXius6_Zq3Sp9XgwXgwzpQ-LrAxff3nV07vq5sdb52GVgUeK4zTCArDUyMj6H6d2i9PxvINGFFupKec0zOfCfBTH_eys7o_dLylwbdyoxFupry2JHphz6SjiAiK9J-BCIc-_3lQTLYZQZIN5sdqk4dDQ64f2w4LuNBXydyrJf4bBttinWP0vKblBn92jmfn38tRlKB1kYcJnphA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"quantity\":2}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}order/{{orderId}}/basket/1/quantity?clientId={{clientId}}&cityId={{cityId}}",
+					"host": [
+						"{{baseURL}}order"
+					],
+					"path": [
+						"{{orderId}}",
+						"basket",
+						"1",
+						"quantity"
+					],
+					"query": [
+						{
+							"key": "clientId",
+							"value": "{{clientId}}"
+						},
+						{
+							"key": "cityId",
+							"value": "{{cityId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление товара",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"success\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.success).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}order/{{orderId}}/basket/1/remove?clientId={{clientId}}&cityId={{cityId}}",
+					"host": [
+						"{{baseURL}}order"
+					],
+					"path": [
+						"{{orderId}}",
+						"basket",
+						"1",
+						"remove"
+					],
+					"query": [
+						{
+							"key": "clientId",
+							"value": "{{clientId}}"
+						},
+						{
+							"key": "cityId",
+							"value": "{{cityId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Товары в корзине",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"success\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.success).to.eql(true);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.shop.megafon.ru/storelocator/get-branch/615",
+					"protocol": "https",
+					"host": [
+						"api",
+						"shop",
+						"megafon",
+						"ru"
+					],
+					"path": [
+						"storelocator",
+						"get-branch",
+						"615"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://vl.shop.megafon.ru/public-api/checkout/v2/",
+			"type": "string"
+		},
+		{
+			"key": "cityId",
+			"value": "1428",
+			"type": "string"
+		},
+		{
+			"key": "clientId",
+			"value": "9088058",
+			"type": "string"
+		},
+		{
+			"key": "orderId",
+			"value": "34773227",
+			"type": "string"
+		}
+	]
+}
