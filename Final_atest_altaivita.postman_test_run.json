@@ -1,0 +1,182 @@
+{
+	"id": "9b950771-ddeb-4050-b500-c1322157c378",
+	"name": "Final_atest_altaivita",
+	"timestamp": "2025-02-23T18:32:29.690Z",
+	"collection_id": "36227815-fe8ee76f-9414-4c27-8920-7799dd48f531",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 10,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-02-23T18:32:19.951Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9864d665-22b4-4cfd-9845-8318aab4b69e",
+			"name": "Добавление товара",
+			"url": "https://vl.shop.megafon.ru/public-api/checkout/v2/batch/order",
+			"time": 5254,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"success": true,
+				"goodId": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"success": {
+					"pass": 1,
+					"fail": 0
+				},
+				"goodId": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5254
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"success": true,
+					"goodId": true
+				}
+			]
+		},
+		{
+			"id": "241d00c2-1c0c-4d37-8313-c4016759384f",
+			"name": "Изменение количества товара",
+			"url": "https://vl.shop.megafon.ru/public-api/checkout/v2/order/34773227/basket/1/quantity?clientId=9088058&cityId=1428",
+			"time": 1817,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"success": true,
+				"goodId": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"success": {
+					"pass": 1,
+					"fail": 0
+				},
+				"goodId": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1817
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"success": true,
+					"goodId": true
+				}
+			]
+		},
+		{
+			"id": "d6cf5edd-bdf8-4f60-838c-fa98b9dc8313",
+			"name": "Удаление товара",
+			"url": "https://vl.shop.megafon.ru/public-api/checkout/v2/order/34773227/basket/1/remove?clientId=9088058&cityId=1428",
+			"time": 1949,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"success": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"success": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1949
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"success": true
+				}
+			]
+		},
+		{
+			"id": "75fd5db0-23aa-4d70-8077-0fd8abc5b7f0",
+			"name": "Товары в корзине",
+			"url": "https://api.shop.megafon.ru/storelocator/get-branch/615",
+			"time": 142,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"success": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"success": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				142
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"success": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 9162,
+	"collection": {
+		"requests": [
+			{
+				"id": "9864d665-22b4-4cfd-9845-8318aab4b69e",
+				"method": "POST"
+			},
+			{
+				"id": "241d00c2-1c0c-4d37-8313-c4016759384f",
+				"method": "PATCH"
+			},
+			{
+				"id": "d6cf5edd-bdf8-4f60-838c-fa98b9dc8313",
+				"method": "DELETE"
+			},
+			{
+				"id": "75fd5db0-23aa-4d70-8077-0fd8abc5b7f0",
+				"method": "GET"
+			}
+		]
+	}
+}
