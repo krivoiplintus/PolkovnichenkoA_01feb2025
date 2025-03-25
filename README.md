@@ -1,4 +1,6 @@
 # PolkovnichenkoA_01feb2025
+Добавил архив с видеопрезентацией работы
+=======
 ##Для запуска тестов:
 1. Склонировать удалённый репозиторий https://github.com/krivoiplintus/PolkovnichenkoA_01feb2025.git
 2. В терминале ввести команду pytest --alluredir=allure-files
